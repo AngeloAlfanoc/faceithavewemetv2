@@ -13,7 +13,7 @@ const getMatchesById = match_id => {
 };
 
 const getPlayerMatchHistory = (player_id, offset, end) => {
-  return http.get(`/players/${player_id}/history?game=csgo&from=0&to=${new Date()/1000}&offset=${offset}&limit=${end}`);
+  return http.get(`/players/${player_id}/history?game=csgo&from=0&to=${Math.round(new Date()/1000)}&offset=${offset}&limit=${end}`);
 };
 
 const getPlayerMatchState = (match_id) => {

@@ -64,7 +64,7 @@ const Search = () => {
     return (
         <div>
             <form onSubmit={e => handleSubmit(e)}>
-                <input value={"luosrevo"} ref={playerOne} placeholder="player 1"></input>
+                <input value={"azak"} ref={playerOne} placeholder="player 1"></input>
                 <input value={"sDohtem"} ref={playerTwo} placeholder="player 2"></input>
                 <button>go</button>
             </form>

@@ -3,5 +3,56 @@
     button {
         width: 100% ;
         color: white;
+        height: 50px;
+        &:focus{
+            border:0;
+        }
     }
+    .matchButton {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        background: #181818;
+        margin: 0 auto;
+        font-size: 13px;
+        width: 100%;
+        height: 50px;
+        margin-bottom: 1px;
+  
+        .mapWrapper {
+          display: flex;
+          justify-content: space-around;
+          width: 13vw;
+          height: 100%;
+  
+          img {
+            width: 100%;
+          }
+  
+        }
+  
+        div {
+          justify-content: space-around;
+          align-content: center;
+          align-items: center;
+          align-self: center;
+          width: 15vw;
+          display: flex;
+  
+  
+          img {
+              max-height: 40px;
+            margin-left: 2%;
+            width: 100px;
+          }
+  
+          a {
+            align-content: center;
+            align-items: center;
+            align-self: center;
+          }
+        }
+  
+      }
 }

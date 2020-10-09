@@ -15,5 +15,5 @@ module.exports = {
   isPlayerTwoWinRate:'',
   isPlayerTwoAVGKD:'',
   isPlayerTwoAvatar:'',
-  isSearchInAmountOfMatches:0
+  isMatches:'',
 }

@@ -75,9 +75,9 @@ const mainReducer = (state = loadState(), action) => {
       const { string } = action;
       return { ...state, isPlayerTwoAvatar: string };
     }
-    case 'SEARCH_IN_AMOUNT_OF_MATCHES': {
-      const { int } = action;
-      return { ...state, isSearchInAmountOfMatches: int };
+    case 'SET_MATCHES': {
+      const { object } = action;
+      return { ...state, isMatches: object };
     }
     default:
       return { ...state };

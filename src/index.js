@@ -18,7 +18,7 @@ const persistedState = loadState();
 
 const config = {
   // TOGGLE_TODO will not be triggered in other tabs
-  blacklist: ['SEARCH_IN_AMOUNT_OF_MATCHES'],
+  blacklist: [''],
 };
 const middlewares = [createStateSyncMiddleware(config)];
 const composeEnhancers =

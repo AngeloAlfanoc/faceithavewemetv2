@@ -18,4 +18,4 @@ export const setPlayerTwoWinRate = string => ({ type : 'SET_PLAYER_TWO_WINRATE',
 export const setPlayerTwoAVGKD = string => ({ type : 'SET_PLAYER_TWO_AVGKD', string});
 export const setPlayerTwoWins = string => ({ type : 'SET_PLAYER_TWO_WINS', string});
 export const setPlayerTwoAvatar = string => ({type: 'SET_PLAYER_TWO_AVATAR', string});
-export const setSearchInAmountOfMatches = int => ({type: 'SEARCH_IN_AMOUNT_OF_MATCHES', int});
+export const setMatches = json => ({type: 'SET_MATCHES', json})

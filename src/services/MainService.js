@@ -14,8 +14,7 @@ const getMatchesById = match_id => {
 
 
 const getPlayerMatchHistory = (player_id, offset, end) => {
-  let lifeTimeMatches = end
-  return http.get(`/players/${player_id}/history?game=csgo&from=0&to=${new Date()/1000}&offset=${offset}&limit=${end}`), lifeTimeMatches;
+  return http.get(`/players/${player_id}/history?game=csgo&from=0&to=${new Date()/1000}&offset=${offset}&limit=${end}`);
 };
 
 const getPlayerStats = player_id => {

@@ -1,3 +1,4 @@
+import Compare from '../components/compare/index'
 import Header from '../components/header/index'
 import Player from '../components/player/index'
 import React from 'react';
@@ -11,6 +12,7 @@ const Index = () => {
       <Search/>
       {/* add params for url  */}
       <Player/>
+      <Compare/>
     </div>
     </>
   );

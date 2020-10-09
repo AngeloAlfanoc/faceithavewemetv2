@@ -22,20 +22,21 @@ import {
     setPlayerTwoWins,
     setSearchInAmountOfMatches
 } from '../../redux/actions'
-import {useDispatch, useSelector} from "react-redux";
 
 import MainService from '../../services/MainService'
+import {useDispatch} from "react-redux";
 
 const Search = () => {
     const playerOne = useRef(null);
     const playerTwo = useRef(null);
     const dispatch = useDispatch();
 
-    const fetchData = (player_name, name, elo, skill, avatar, matches, avgkd, wins, winrate) => {
+    const fetchData = (avatar, avgkd, elo, id, matches, name, player_name, skill, winrate, wins) => {
         try {
             MainService
                 .getPlayerByName(player_name)
                 .then(result => {
+                    dispatch(id(result.data.player_id))
                     dispatch(name(result.data.nickname))
                     dispatch(elo(result.data.games.csgo.faceit_elo))
                     dispatch(skill(result.data.games.csgo.skill_level))
@@ -55,8 +56,8 @@ const Search = () => {
     };
 
     const handleSubmit = (e) => {
-        fetchData(playerOne.current.value, setPlayerOneName, setPlayerOneElo, setPlayerOneLevel, setPlayerOneAvatar, setPlayerOneMatches, setPlayerOneAVGKD, setPlayerOneWins, setPlayerOneWinRate)
-        fetchData(playerTwo.current.value, setPlayerTwoName, setPlayerTwoElo, setPlayerTwoLevel, setPlayerTwoAvatar, setPlayerTwoMatches, setPlayerTwoAVGKD, setPlayerTwoWins, setPlayerTwoWinRate)
+        fetchData(setPlayerOneAvatar, setPlayerOneAVGKD, setPlayerOneElo, setPlayerOneId, setPlayerOneMatches, setPlayerOneName, playerOne.current.value, setPlayerOneLevel, setPlayerOneWinRate, setPlayerOneWins)
+        fetchData(setPlayerTwoAvatar, setPlayerTwoAVGKD, setPlayerTwoElo, setPlayerTwoId, setPlayerTwoMatches, setPlayerTwoName, playerTwo.current.value, setPlayerTwoLevel, setPlayerTwoWinRate, setPlayerTwoWins)
         e.preventDefault();
     }
 

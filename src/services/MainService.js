@@ -12,9 +12,12 @@ const getMatchesById = match_id => {
   return http.get(`/matches/${match_id}`);
 };
 
-
 const getPlayerMatchHistory = (player_id, offset, end) => {
   return http.get(`/players/${player_id}/history?game=csgo&from=0&to=${new Date()/1000}&offset=${offset}&limit=${end}`);
+};
+
+const getPlayerMatchState = (match_id) => {
+  return http.get(`/matches/${match_id}/stats`);
 };
 
 const getPlayerStats = player_id => {
@@ -27,4 +30,5 @@ export default {
     getMatchesById,
     getPlayerMatchHistory,
     getPlayerStats,
+    getPlayerMatchState
 };

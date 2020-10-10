@@ -1,11 +1,55 @@
 @import url("https://fonts.googleapis.com/css?family=Play");
 
 body {
-    background: #1f1f1f;
+
+    background-color: #191C21;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23191c21' fill-opacity='0.06' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
     font-family: "Play", sans-serif;
+    overflow-x: hidden;
 }
 
-h1,h2,h3,h4 {
+h1,
+h2,
+h3,
+h4 {
     user-select: none;
     margin: 0 auto;
 }
+
+span {
+    font-size: .8rem;
+}
+
+button {
+    border: 0;
+    background: #195962;
+    width: 80px;
+    padding: 5px;
+    max-height: 30px;
+   
+}
+
+button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+input {
+    width: 150px;
+    background: #252932;
+    color: #ebeff3;
+    border:  1px solid #252932;
+    padding: 5px;
+    margin: 15px 5px 0 0
+  }
+
+  input:hover {
+    border: 1px solid #181818;
+  }
+
+  input:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+ 

@@ -19,3 +19,7 @@ export const setPlayerTwoAVGKD = string => ({ type : 'SET_PLAYER_TWO_AVGKD', str
 export const setPlayerTwoWins = string => ({ type : 'SET_PLAYER_TWO_WINS', string});
 export const setPlayerTwoAvatar = string => ({type: 'SET_PLAYER_TWO_AVATAR', string});
 export const setMatches = json => ({type: 'SET_MATCHES', json})
+export const setPlayerTwoStreak = string => ({type: 'SET_PLAYER_TWO_CURRENT_STREAK', string})
+export const setPlayerOneStreak = string => ({type: 'SET_PLAYER_ONE_CURRENT_STREAK', string})
+export const setPlayerTwoSteamLink = string => ({type: 'SET_PLAYER_TWO_STEAM', string})
+export const setPlayerOneSteamLink = string => ({type: 'SET_PLAYER_ONE_STEAM', string})

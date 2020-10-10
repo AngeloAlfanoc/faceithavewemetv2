@@ -39,6 +39,10 @@ const mainReducer = (state = loadState(), action) => {
       const { string } = action;
       return { ...state, isPlayerOneAvatar: string };
     }
+    case 'SET_PLAYER_ONE_CURRENT_STREAK': {
+      const { string } = action;
+      return { ...state, isPlayerOneStreak: string };
+    }
     case 'SET_PLAYER_TWO_NAME': {
       const { string } = action;
       return { ...state, isPlayerTwoName: string };
@@ -75,9 +79,17 @@ const mainReducer = (state = loadState(), action) => {
       const { string } = action;
       return { ...state, isPlayerTwoAvatar: string };
     }
-    case 'SET_MATCHES': {
-      const { object } = action;
-      return { ...state, isMatches: object };
+    case 'SET_PLAYER_TWO_CURRENT_STREAK': {
+      const { string } = action;
+      return { ...state, isPlayerTwoStreak: string };
+    }
+    case 'SET_PLAYER_TWO_STEAM': {
+      const { string } = action;
+      return { ...state, isPlayerTwoSteamLink: string };
+    }
+    case 'SET_PLAYER_ONE_STEAM': {
+      const { string } = action;
+      return { ...state, isPlayerOneSteamLink: string };
     }
     default:
       return { ...state };

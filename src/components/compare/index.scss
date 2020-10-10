@@ -1,5 +1,6 @@
 
 .compare {
+  border:  1px solid #195962;
     button {
         width: 100% ;
         color: white;
@@ -8,12 +9,12 @@
             border:0;
         }
     }
-    .matchButton {
+    .match-listing {
         display: flex;
         justify-content: space-around;
         padding-top: 10px;
         padding-bottom: 10px;
-        background: #181818;
+        background: #252932;
         margin: 0 auto;
         font-size: 13px;
         width: 100%;

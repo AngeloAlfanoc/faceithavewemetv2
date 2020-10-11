@@ -23,3 +23,5 @@ export const setPlayerTwoStreak = string => ({type: 'SET_PLAYER_TWO_CURRENT_STRE
 export const setPlayerOneStreak = string => ({type: 'SET_PLAYER_ONE_CURRENT_STREAK', string})
 export const setPlayerTwoSteamLink = string => ({type: 'SET_PLAYER_TWO_STEAM', string})
 export const setPlayerOneSteamLink = string => ({type: 'SET_PLAYER_ONE_STEAM', string})
+export const setPlayerOneParam = string => ({type: 'SET_PLAYER_ONE_PARAM', string})
+export const setPlayerTwoParam = string => ({type: 'sSET_PLAYER_TWO_PARAM', string})

@@ -1,6 +1,6 @@
 import './index.scss'
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Animated } from "react-animated-css";
 import Loader from '../loader/index'
@@ -9,12 +9,12 @@ import { convertUnixTime } from '../../helpers/linuxConvert'
 import { mapDecider } from '../../helpers/mapDecider'
 import { setMatches } from '../../redux/actions'
 import { uniqueEntry } from '../../helpers/uniqueEntry'
-
+import {TableHead} from './tablehead'
 const Compare = (props) => {
-    
+
     // cached arr
     let cached = [];
-    const dispatch = useDispatch();
+
 
     const playerOneId = useSelector(state => state.isPlayerOneId)
     const playerTwoId = useSelector(state => state.isPlayerTwoId)
@@ -24,19 +24,21 @@ const Compare = (props) => {
     const [error, setError] = useState(null);
     const [initLoad, setInitLoad] = useState(false)
     const [offset, setOffset] = useState(0)
-
+    const loadMoreButton = useRef(null)
     const handleOnClick = (e) => {
         e.preventDefault();
         setOffset(100)
         fetchData(playerOneId)
     }
 
-   
+
     const handleLoadMore = (e) => {
         e.preventDefault();
         setOffset(prevOffset => prevOffset + 100)
         fetchData(playerOneId)
     }
+
+
 
     async function fetchData(id) {
         let tmp;
@@ -54,11 +56,11 @@ const Compare = (props) => {
         } catch (e) {
             setError(e);
         } finally {
-            dispatch(setMatches(cached))
             setLoading(false)
             setInitLoad(true)
         }
     }
+
 
     return (
         <div className="compare">
@@ -68,30 +70,14 @@ const Compare = (props) => {
                 </form>
             </Animated>}
             {initLoad && <Animated animationIn="fadeInDown" isVisible={initLoad || loading}>
-                <button onClick={e => handleLoadMore(e)}>{items.length} games found, Load more?</button>
+                <button ref={loadMoreButton} onClick={e => handleLoadMore(e)}>{items.length} games found, Load more?</button>
             </Animated>}
 
 
             <div>
-                {initLoad && <div>
-                    <div className="d-flex text-white">
-                        <div className="match-listing">
-                            <div>Time</div>
-                            <div>Score</div>
-                            <div>Map</div>
-                        </div>
-                    </div>
-                </div>}
+                {initLoad && <TableHead/>}
                 {initLoad || loading && <Animated animationIn="fadeInDown" isVisible={initLoad || loading}>
-                    <div>
-                        <div className="d-flex text-white">
-                            <div className="match-listing">
-                                <div>Time</div>
-                                <div>Score</div>
-                                <div>Map</div>
-                            </div>
-                        </div>
-                    </div>
+                <TableHead/>
                 </Animated>}
                 {error && <div className="text-white"> Error loading resources, please check your internet connection or refresh this page.</div>}
                 {items && items.map((item, i) => {

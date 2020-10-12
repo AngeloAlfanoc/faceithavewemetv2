@@ -1,0 +1,36 @@
+.activity{
+    border:  1px solid #195962;
+    position: fixed;
+    top:0;
+    height: 100vh;
+    width: 300px;
+    transition: .3s ease-in-out;
+    display: flex;
+    background-color:  #252932;
+    z-index: 999;
+    .activity_button{
+        user-select: none;
+        height: 100vh;
+        background-color: #195962;
+        width: 25px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        &:hover{
+            cursor: pointer;
+        }
+        div{
+            transition: all 1s;
+            font-size: .7rem;
+            position: absolute;
+            transform: rotate(-90deg);
+            color: white;
+            display: flex;
+        }
+    }
+    .content{
+        color: white;
+    }
+}

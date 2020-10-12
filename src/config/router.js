@@ -1,10 +1,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Compare from '../pages/compare'
+import Compare from '../pages/index'
 import React from 'react';
-
-
-
 
 const Router = () => {
   return (

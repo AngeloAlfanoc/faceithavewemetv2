@@ -7,6 +7,7 @@ export const TableHead = () => {
             <div>Time</div>
             <div>Score</div>
             <div>Map</div>
+          
         </div>
     </div>
 </div>

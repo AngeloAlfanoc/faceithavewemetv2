@@ -3,6 +3,8 @@ import 'normalize.css'
 import 'animate.css/animate.css'
 import './index.scss'
 
+import * as serviceWorker from './serviceWorker';
+
 import { applyMiddleware, compose, createStore } from "redux";
 import { createStateSyncMiddleware, initMessageListener } from "redux-state-sync";
 import { loadState, saveState } from "./redux/localStorage";
@@ -11,6 +13,8 @@ import App from './App';
 import { Provider } from "react-redux";
 import React from 'react';
 import ReactDOM from 'react-dom';
+import firebase from "firebase/app";
+import {firebaseConfig} from "./firebase";
 import mainReducer from "./redux/reducer";
 
 const persistedState = loadState();
@@ -39,6 +43,8 @@ store.subscribe(() => {
   saveState(store.getState());
 });
 
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 initMessageListener(store);
 ReactDOM.render(
   <React.StrictMode>
@@ -49,3 +55,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+serviceWorker.register();

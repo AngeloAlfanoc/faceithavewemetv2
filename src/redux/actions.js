@@ -18,10 +18,14 @@ export const setPlayerTwoWinRate = string => ({ type : 'SET_PLAYER_TWO_WINRATE',
 export const setPlayerTwoAVGKD = string => ({ type : 'SET_PLAYER_TWO_AVGKD', string});
 export const setPlayerTwoWins = string => ({ type : 'SET_PLAYER_TWO_WINS', string});
 export const setPlayerTwoAvatar = string => ({type: 'SET_PLAYER_TWO_AVATAR', string});
-export const setMatches = json => ({type: 'SET_MATCHES', json})
-export const setPlayerTwoStreak = string => ({type: 'SET_PLAYER_TWO_CURRENT_STREAK', string})
-export const setPlayerOneStreak = string => ({type: 'SET_PLAYER_ONE_CURRENT_STREAK', string})
+export const setPlayerTwoWinStreak = string => ({type: 'SET_PLAYER_TWO_CURRENT_STREAK', string})
+export const setPlayerOneWinStreak = string => ({type: 'SET_PLAYER_ONE_CURRENT_STREAK', string})
 export const setPlayerTwoSteamLink = string => ({type: 'SET_PLAYER_TWO_STEAM', string})
 export const setPlayerOneSteamLink = string => ({type: 'SET_PLAYER_ONE_STEAM', string})
-export const setPlayerOneParam = string => ({type: 'SET_PLAYER_ONE_PARAM', string})
-export const setPlayerTwoParam = string => ({type: 'sSET_PLAYER_TWO_PARAM', string})
+export const setPlayerOneParams = string => ({type: 'SET_PLAYER_ONE_PARAMS', string})
+export const setPlayerTwoParams = string => ({type: 'SET_PLAYER_TWO_PARAMS', string})
+export const setPlayerOneCountry = string => ({type: 'SET_PLAYER_ONE_COUNTRY', string})
+export const setPlayerTwoCountry = string => ({type: 'SET_PLAYER_TWO_COUNTRY', string})
+export const setUserSessionID = string => ({type : 'SET_USER_SESSION', string})
+export const setUserMatches = array => ({type: 'SET_USER_MATCHES', array})
+export const setHardReset = obj => ({type: 'SET_HARD_RESET', obj})

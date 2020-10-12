@@ -41,7 +41,7 @@ const mainReducer = (state = loadState(), action) => {
     }
     case 'SET_PLAYER_ONE_CURRENT_STREAK': {
       const { string } = action;
-      return { ...state, isPlayerOneStreak: string };
+      return { ...state, isPlayerOneWinStreak: string };
     }
     case 'SET_PLAYER_TWO_NAME': {
       const { string } = action;
@@ -81,7 +81,7 @@ const mainReducer = (state = loadState(), action) => {
     }
     case 'SET_PLAYER_TWO_CURRENT_STREAK': {
       const { string } = action;
-      return { ...state, isPlayerTwoStreak: string };
+      return { ...state, isPlayerTwoWinStreak: string };
     }
     case 'SET_PLAYER_TWO_STEAM': {
       const { string } = action;
@@ -90,6 +90,33 @@ const mainReducer = (state = loadState(), action) => {
     case 'SET_PLAYER_ONE_STEAM': {
       const { string } = action;
       return { ...state, isPlayerOneSteamLink: string };
+    }
+    case 'SET_PLAYER_ONE_PARAMS': {
+      const { string } = action;
+      return { ...state, isPlayerOneParams: string };
+    }
+    case 'SET_PLAYER_TWO_PARAMS': {
+      const { string } = action;
+      return { ...state, isPlayerTwoParams: string };
+    }
+    case 'SET_PLAYER_TWO_COUNTRY': {
+      const { string } = action;
+      return { ...state, isPlayerTwoCountry: string };
+    }
+    case 'SET_PLAYER_ONE_COUNTRY': {
+      const { string } = action;
+      return { ...state, isPlayerOneCountry: string };
+    }
+    case 'SET_USER_SESSION': {
+      const { string } = action;
+      return { ...state, isUserSession: string };
+    }
+    case 'SET_USER_MATCHES': {
+      const { array } = action;
+      return { ...state, isUserMatches: array };
+    }
+    case 'SET_HARD_RESET' : {
+      return { state : {} }
     }
     default:
       return { ...state };

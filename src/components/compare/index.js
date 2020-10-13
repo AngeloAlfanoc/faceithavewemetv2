@@ -21,6 +21,11 @@ const Compare = (props) => {
 
     const playerOneId = useSelector(state => state.isPlayerOneId)
     const playerTwoId = useSelector(state => state.isPlayerTwoId)
+    const playerOneName = useSelector(state => state.isPlayerOneName);
+    const playerTwoName = useSelector(state => state.isPlayerTwoName);
+    const playerOneParams = useSelector(state => state.isPlayerOneParams);
+    const playerTwoParams = useSelector(state => state.isPlayerTwoParams);
+
     const userMatches = useSelector(state => state.isUserMatches)
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -45,11 +50,12 @@ const Compare = (props) => {
         fetchData(playerOneId)
     }
 
-    useEffect(() => {
-        if (userMatches && items.length === 0 && cached.length === 0 && !initLoad) {
-            setItems(userMatches)
-        }
-    }, [userMatches, items.length, cached.length, initLoad]);
+    // useEffect(() => {
+    //     if (userMatches && items.length === 0 && cached.length === 0 && !initLoad && playerOneName === playerOneParams && playerTwoName === playerTwoParams) {
+
+    //         setItems(userMatches)
+    //     }
+    // }, [userMatches, items.length, cached.length, initLoad]);
 
 
     async function fetchData(id) {
@@ -91,35 +97,13 @@ const Compare = (props) => {
 
             <div>
 
-                {initLoad && <TableHead />}
-                {loading &&
+               
+                {loading || initLoad ?
                     <Animated animationIn="fadeInDown" isVisible={initLoad || loading}>
                         <TableHead />
-                    </Animated>}
+                    </Animated> : ''}
 
                 <div className="matches-container">
-                    {!initLoad && userMatches && userMatches.map((item, i) => {
-                        let dura = (Math.atan2(i, 2) / Math.PI) * 1000
-
-                        return (
-
-                            <Animated key={i} animationIn="fadeInRight" animationInDuration={dura}>
-                                <a href={`https://www.faceit.com/en/csgo/room/${item[0].match_id}/scoreboard`} target='_blank'>
-                                    <div className="d-flex text-white">
-                                        <div className="match-listing">
-                                            <div>{convertUnixTime(item[0].finished_at)}</div>
-                                            <div>{item[1].round_stats.Score}</div>
-                                            <div>
-                                                <div>{item[1].round_stats.Map}</div>
-                                                <img src={mapDecider(item[1].round_stats.Map)}></img>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </Animated>
-
-                        )
-                    })}
                     {items && items.map((item, i) => {
                         let dura = (Math.atan2(i, 2) / Math.PI) * 1000
 
@@ -146,10 +130,10 @@ const Compare = (props) => {
 
                 </div>
                 {loading && <Loader />}
-                {initLoad && <Animated animationIn="fadeInUp" isVisible={initLoad || loading}>
+                {loading || initLoad ? <Animated animationIn="fadeInUp" isVisible={initLoad || loading}>
                     {items && <button ref={loadMoreButton} disabled={loading ? true : false} onClick={e => handleLoadMore(e)}>{items.length} games found, <span style={{ textDecoration: "underline" }}>Load more?</span></button>}
                     <div className="period py-1"><small>Matches shown are between: {endSearch} and  {startSearch}</small> </div>
-                </Animated>}
+                </Animated> : ''}
             </div>
         </div>
     );

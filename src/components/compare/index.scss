@@ -20,6 +20,7 @@
       max-height: 45vh;
       overflow-y: auto;
       overflow-x: hidden;
+      transition: .2s all ease-in-out;
     }
     .match-listing {
         display: flex;

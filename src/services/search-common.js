@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://open.faceit.com/data/v4/"
+const baseUrl = "https://open.faceit.com/data/v4/search/"
 // const token = process.env.REACT_APP_FACEITAPI
 const tokenArray = [
   process.env.REACT_APP_FACEITAPI_1,

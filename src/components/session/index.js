@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import md5 from 'md5'
 import { setUserSessionID } from './../../redux/actions';
 import uid from 'uid'
 
-// import { saveUserData } from './../../helpers/firebase';
-
-
-
-
 const Session = () => {
     const userSession = useSelector(state => state.isUserSession);
     const dispatch = useDispatch();
-
     const [session, setSession] = useState()
     const db = firebase.firestore();
     const awaitUserThenWrite = async (session) => {

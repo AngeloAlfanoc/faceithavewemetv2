@@ -1,7 +1,12 @@
 import http from "./http-common";
+import search from './search-common'
 
 const getPlayerByName = name => {
   return http.get(`players?nickname=${name}`);
+};
+
+const getPlayersBySearch = name => {
+  return search.get(`players?nickname=${name}&offset=0&limit=20`);
 };
 
 const getPlayerById = player_id => {

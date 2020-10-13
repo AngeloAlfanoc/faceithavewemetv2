@@ -1,6 +1,6 @@
 import './index.scss'
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import {
     setHardReset,
     setPlayerOneAVGKD,
@@ -11,6 +11,7 @@ import {
     setPlayerOneLevel,
     setPlayerOneMatches,
     setPlayerOneName,
+    setPlayerOneParams,
     setPlayerOneSteamLink,
     setPlayerOneWinRate,
     setPlayerOneWinStreak,
@@ -23,18 +24,20 @@ import {
     setPlayerTwoLevel,
     setPlayerTwoMatches,
     setPlayerTwoName,
+    setPlayerTwoParams,
     setPlayerTwoSteamLink,
     setPlayerTwoWinRate,
     setPlayerTwoWinStreak,
     setPlayerTwoWins
 } from '../../redux/actions'
-import { setPlayerOneParams, setPlayerTwoParams } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { Animated } from "react-animated-css";
+import Flag from 'react-world-flags'
 import MainService from '../../services/MainService'
 import { ReactComponent as SearchIcon } from '../../assets/ui/magnifier.svg'
-import initialState from '../../redux/initialState'
-import {setUserMatches} from '../../redux/actions'
+import { createArrayOfVars } from '../../helpers/searchHelpers'
+import { debounceEvent } from '../../helpers/debouce'
 
 const Search = () => {
 
@@ -45,16 +48,20 @@ const Search = () => {
     const [inputOne, setInputOne] = useState()
     const [inputTwo, setInputTwo] = useState()
 
-    const playerOneName = useSelector (state => state.isPlayerOneName);
-    const playerTwoName = useSelector (state => state.isPlayerTwoName)
+    const playerOneName = useSelector(state => state.isPlayerOneName);
+    const playerTwoName = useSelector(state => state.isPlayerTwoName)
     const playerOneParams = useSelector(state => state.isPlayerOneParams);
     const playerTwoParams = useSelector(state => state.isPlayerTwoParams);
 
+    const [searchOutput, setSearchOutput] = useState([])
+    const [initLoad, setInitLoad] = useState(false)
+
+
+
     const fetchData = (avatar, avgkd, elo, id, matches, name, player_name, skill, winrate, wins, streak, steam, country) => {
+
         try {
-            MainService
-                .getPlayerByName(player_name)
-                .then(result => {
+            MainService.getPlayerByName(player_name).then(result => {
                     dispatch(id(result.data.player_id))
                     dispatch(name(result.data.nickname))
                     dispatch(elo(result.data.games.csgo.faceit_elo))
@@ -74,63 +81,54 @@ const Search = () => {
         } catch (e) {
             console.error(e)
         }
-        
+        finally {
+            setInitLoad(true)
+        }
+
     };
- 
-    const onClickInput = () => {
-        setInputOne()
-        setInputTwo()
-        dispatch(setPlayerOneParams())
-        dispatch(setPlayerTwoParams())
-        
+
+
+
+
+    const onInput = () => {
+        setInputOne();
+        setInputTwo();
+        dispatch(setPlayerOneParams());
+        dispatch(setPlayerTwoParams());
     }
+
+  
     const fetchDataPlayerOne = (value) => {
-        fetchData(
-                setPlayerOneAvatar,
-                setPlayerOneAVGKD,
-                setPlayerOneElo,
-                setPlayerOneId,
-                setPlayerOneMatches,
-                setPlayerOneName,
-                value,
-                setPlayerOneLevel,
-                setPlayerOneWinRate,
-                setPlayerOneWins,
-                setPlayerOneWinStreak,
-                setPlayerOneSteamLink,
-                setPlayerOneCountry
-            )
+        fetchData(setPlayerOneAvatar, setPlayerOneAVGKD, setPlayerOneElo, setPlayerOneId, setPlayerOneMatches, setPlayerOneName, value, setPlayerOneLevel, setPlayerOneWinRate, setPlayerOneWins, setPlayerOneWinStreak, setPlayerOneSteamLink, setPlayerOneCountry)
     }
     const fetchDataPlayerTwo = (value) => {
-        fetchData(
-                setPlayerTwoAvatar,
-                setPlayerTwoAVGKD,
-                setPlayerTwoElo,
-                setPlayerTwoId,
-                setPlayerTwoMatches,
-                setPlayerTwoName,
-                value,
-                setPlayerTwoLevel,
-                setPlayerTwoWinRate,
-                setPlayerTwoWins,
-                setPlayerTwoWinStreak,
-                setPlayerTwoSteamLink,
-                setPlayerTwoCountry
-            )
+        fetchData(setPlayerTwoAvatar, setPlayerTwoAVGKD, setPlayerTwoElo, setPlayerTwoId, setPlayerTwoMatches, setPlayerTwoName, value, setPlayerTwoLevel, setPlayerTwoWinRate, setPlayerTwoWins, setPlayerTwoWinStreak, setPlayerTwoSteamLink, setPlayerTwoCountry)
     }
+
+    // handle on submit
     const handleSubmit = (e) => {
-        if (inputOne || inputTwo !== '') {
-            fetchDataPlayerOne(playerOne.current.value)
-            fetchDataPlayerTwo(playerTwo.current.value)
-            e.preventDefault();
-            
- 
-        }
+        e.preventDefault();
+    
+            if (inputOne || inputTwo !== '') {
+                fetchDataPlayerOne(playerOne.current.value)
+                fetchDataPlayerTwo(playerTwo.current.value)
+                setLocation();
+            }
+        
     }
+    const handleSuggestiveClickOne = (player) => {
+        setInputOne(player);
+        setSearchOutput();
+    }
+
+    // submit if parameters
     const handleSubmitParam = () => {
         if (playerOneParams && playerTwoParams) {
+            if(playerOneName !== playerOneParams || playerTwoName !== playerTwoParams) {
             fetchDataPlayerOne(playerOneParams)
-            fetchDataPlayerTwo(playerTwoParams)
+            fetchDataPlayerTwo(playerTwoParams) 
+            }
+            
         }
     }
 
@@ -140,27 +138,43 @@ const Search = () => {
         setInputOne(playerOneParams)
         setInputTwo(playerTwoParams)
     }
-    setInputFields().then(()=>handleSubmitParam());
+    setInputFields().then(() => handleSubmitParam());
 
     const handleInputOne = (e) => {
         e.preventDefault();
         setInputOne(e.target.value)
     }
+
     const handleInputTwo = (e) => {
         e.preventDefault();
         setInputTwo(e.target.value)
     }
-    const handleReset= (e) => {
+
+    const handleReset = (e) => {
         e.preventDefault();
         dispatch(setHardReset())
+        window.location.replace(`/?user=${''}&?user=${''}`)
     }
+
+    const setLocation = () => {
+        if (playerOneName && playerTwoName) {
+            window.location.replace(`/?user=${playerOne.current.value}&?user=${playerTwo.current.value}`)
+        }
+    }
+
     return (
         <div>
-            <form onSubmit={e => handleSubmit(e)}>
-                <input type="text" value={inputOne} name='player' required={true} onChange={e => handleInputOne(e)} onClick={e => { onClickInput(e) }} ref={playerOne} placeholder="player 1"></input>
-                <input type="text" value={inputTwo} name='player' required={true} onChange={e => handleInputTwo(e)} onClick={e => { onClickInput(e) }} ref={playerTwo} placeholder="player 2"></input>
+            <form className="d-flex align-items-center" onSubmit={e => handleSubmit(e)}>
+                <div>
+                    <input type="text" value={inputOne} name='player' required={true} onKeyDown={e => onInput(e)} onChange={e => handleInputOne(e)} onClick={e => { onInput(e) }} ref={playerOne} placeholder="player 1"></input>
+                    <div className="auto-complete-container">
+                        
+                    </div>
+                </div>
+                <input type="text" value={inputTwo} name='player' required={true}  onKeyDown={e => onInput(e)} onChange={e => handleInputTwo(e)} onClick={e => { onInput(e) }} ref={playerTwo} placeholder="player 2"></input>
+
                 <button style={{ width: 45 }}><SearchIcon height={15} /></button>
-                <button onClick={e=>handleReset(e)} className="mx-1 text-white" style={{ width: 60 }}><small>Reset</small></button>
+                <button onClick={e => handleReset(e)} className="mx-1 text-white" style={{ width: 60 }}><small>Reset</small></button>
             </form>
 
         </div>

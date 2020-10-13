@@ -1,28 +1,27 @@
-import React, {useEffect, useState} from 'react'
-import {setPlayerOneParams, setPlayerTwoParams} from '../../redux/actions'
+import React, { useEffect, } from 'react'
+import { setPlayerOneParams, setPlayerTwoParams } from '../../redux/actions'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, } from 'react-redux'
 
-const UrlState = () => {
+const UrlState = (props) => {
 
   let cached = []
+
+
   const dispatch = useDispatch();
-    // TODO Track and fill in user currently being searched in URL
-    useEffect(() => {
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        for(let value of urlParams.values()) {
-          cached.push(value)
-        }
-        dispatch(setPlayerOneParams(cached[0]))
-        dispatch(setPlayerTwoParams(cached[1]))
-         if (cached.length === 0){
-          window.location.href=`/?user=${''}&?user=${''}`
-         }
-      },[]);
+  useEffect(() => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    for (let value of urlParams.values()) {
+      cached.push(value)
+    }
+    dispatch(setPlayerOneParams(cached[0]))
+    dispatch(setPlayerTwoParams(cached[1]))
+  }, []);
 
 
-      return (<></>)
+
+  return (<></>)
 
 }
 

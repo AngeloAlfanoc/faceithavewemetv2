@@ -1,0 +1,18 @@
+header{
+    display: flex;
+    .notice{
+        text-align: center;
+        background-color: #195962;
+    }
+    .mast-head{
+        display: flex;
+        justify-content: start;
+        width: 100%;
+        align-items: center;
+        h1{
+        text-align: left;
+        margin-right: 5px;
+        }
+    }
+    
+}

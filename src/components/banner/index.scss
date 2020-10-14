@@ -5,6 +5,18 @@
     right: 3rem;
     top:0;
     position: absolute;
+    @media screen and (max-width: 1800px) {
+        // display:none;
+        top:3rem;
+        height: 10vh;
+        right: 8rem;
+        width: 35%;
+      }
+      @media screen and (max-width: 991px) {
+        width: 77vw;
+        position: static;
+        margin:0 auto
+      }
     span{
         background-color: #195962 ;
         color: white;

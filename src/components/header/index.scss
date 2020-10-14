@@ -1,5 +1,8 @@
 header{
     display: flex;
+    @media screen and (max-width: 1000px) {
+        // padding-top: 10rem;
+      }
     .notice{
         text-align: center;
         background-color: #195962;
@@ -9,6 +12,9 @@ header{
         justify-content: start;
         width: 100%;
         align-items: center;
+        @media screen and (max-width: 991px) {
+            justify-content: center;
+          }
         h1{
         text-align: left;
         margin-right: 5px;

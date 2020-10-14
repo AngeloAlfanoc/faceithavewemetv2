@@ -11,12 +11,16 @@ const Session = () => {
     const dispatch = useDispatch();
     const [session, setSession] = useState()
     const db = firebase.firestore();
+
+
     const awaitUserThenWrite = async (session) => {
         await userSession;
         db.collection('users').add({
             sessionid: session
         })
     }
+
+    
     const awaitUserUpdateSession = async () => {
         await userSession;
         const usersRef = db.collection("users")

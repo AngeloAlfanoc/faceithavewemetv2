@@ -2,7 +2,10 @@ import './index.scss'
 
 import React, { useState } from 'react';
 
+import RecentSearches from './../recentsearches/index';
+
 const Activity = () => {
+
     const [activityBar, setActivityBar] = useState(true);
     return (
         <div className="activity" style={activityBar ? { left: -275 } : { left: 0 }}>
@@ -13,6 +16,7 @@ const Activity = () => {
                 {/* <div className="users_online"><UserIcon className="p-1" fill={'#ffffff'} /> <span>users online: 0</span></div> */}
                 <div className="recent_searches">
                     <span>Recent Searches:</span>
+                    <RecentSearches/>
                 </div>
             </div>
         </div>

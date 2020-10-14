@@ -17,8 +17,17 @@ h2,
 h3,
 h4 {
     user-select: none;
+    @media screen and (max-width: 452px) {
+      font-size: 1.2rem;
+      text-align: center;
+    }
 }
-
+.container{
+  @media screen and (max-width: 452px) {
+  margin-left: 1rem;
+  width: 97vw;
+  }
+}
 span {
     font-size: .8rem;
 }

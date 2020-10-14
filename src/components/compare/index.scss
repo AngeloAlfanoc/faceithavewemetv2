@@ -15,6 +15,9 @@
       justify-content: center;
       color:white;
       background-color: #195962;
+      small{
+        text-align: center;
+      }
     }
     .matches-container{
       max-height: 45vh;
@@ -53,12 +56,17 @@
           align-self: center;
           width: 15vw;
           display: flex;
-  
+          @media screen and (max-width: 452px) {
+            width: 5rem;
+          }
   
           img {
-              max-height: 40px;
+            max-height: 40px;
             margin-left: 2%;
             width: 100px;
+            @media screen and (max-width: 452px) {
+              display: none;
+            }
           }
   
           a {

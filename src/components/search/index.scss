@@ -1,28 +1,19 @@
-form{
+.search{
+  
+  .button-set {
+    @media screen and (max-width: 452px) {
+      margin-top: 15px !important;
+    }
+  }
+  @media screen and (max-width: 452px) {
+    width: 77vw;
+    margin-left: 2rem;
+  }
+  input{
+    @media screen and (max-width: 452px) {
+        margin-top: 5px !important;
+        width: 100%;
+      }
+  }
 
 }
-input{
-    position: relative;
-}
- .auto-complete-container{
-     z-index: 99;
-    //  border:  1px solid #195962;
-     position: absolute;
-     background-color: #191C21;
-     width: 100%;
-     min-width: 200px;
-     max-width: 300px;
-     color: white;
-     margin-top: 2px;
-     div{
-         background-color: #252932;
-         margin-top: 1px;
-         padding-left: 15px;
-         height: 30px;
-         display: flex;
-         align-items: center;
-         &:hover{
-             cursor: pointer;
-         }
-     }
- }

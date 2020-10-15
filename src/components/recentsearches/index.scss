@@ -1,0 +1,14 @@
+.search-container {
+  height: 85vh;
+  overflow-y: scroll;
+  .search-entry {
+    background-color: #191c21;
+    padding: 6px 17px;
+    margin: 1px 0;
+    width: 230px;
+    a{
+        font-weight: 700;
+        color: white;
+    }
+  }
+}

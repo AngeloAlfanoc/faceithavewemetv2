@@ -32,14 +32,9 @@ import {
 } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { Animated } from "react-animated-css";
-import Flag from 'react-world-flags'
 import MainService from '../../services/MainService'
 import { ReactComponent as SearchIcon } from '../../assets/ui/magnifier.svg'
-import { createArrayOfVars } from '../../helpers/searchHelpers'
-import { debounceEvent } from '../../helpers/debouce'
 import firebase from 'firebase'
-import { writeRecentSearch } from '../../components/recentsearches/index'
 
 const Search = () => {
     const db = firebase.firestore();

@@ -12,7 +12,7 @@ import UrlState from '../components/urlstate/index'
 const Index = () => {
   return (
     <>
-    {/* <Session/> */}
+    <Session/>
     <UrlState/>
     <Banner/>
     <Header/>
@@ -22,6 +22,7 @@ const Index = () => {
       <Search/>
       <Player/>
       <Compare/>
+      
       <Footer/>
     </div>
    

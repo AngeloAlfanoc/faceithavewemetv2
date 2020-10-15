@@ -26,5 +26,6 @@ module.exports = {
   isPlayerOneCountry:'',
   isPlayerTwoCountry:'',
   isUserSession:'',
-  isUserMatches:'',
+  isPreviousPush:'',
+  isRecentSearches:''
 }

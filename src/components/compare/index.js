@@ -10,7 +10,6 @@ import Swal from 'sweetalert2'
 import { TableHead } from './tablehead'
 import { convertUnixTime } from '../../helpers/linuxConvert'
 import { mapDecider } from '../../helpers/mapDecider'
-import { setUserMatches } from '../../redux/actions'
 import { uniqueEntry } from '../../helpers/uniqueEntry'
 
 const Compare = (props) => {
@@ -26,7 +25,7 @@ const Compare = (props) => {
     const playerOneParams = useSelector(state => state.isPlayerOneParams);
     const playerTwoParams = useSelector(state => state.isPlayerTwoParams);
 
-    const userMatches = useSelector(state => state.isUserMatches)
+
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -42,7 +41,7 @@ const Compare = (props) => {
         fetchData(playerOneId)
         setItems([])
         cached=[]
-        dispatch(setUserMatches(uniqueEntry(cached)))
+
     }
 
     const handleLoadMore = (e) => {
@@ -80,7 +79,7 @@ const Compare = (props) => {
         } finally {
             setLoading(false)
             setInitLoad(true)
-            dispatch(setUserMatches(uniqueEntry(cached)))
+
         }
     }
 

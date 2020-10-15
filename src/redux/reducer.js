@@ -111,9 +111,13 @@ const mainReducer = (state = loadState(), action) => {
       const { string } = action;
       return { ...state, isUserSession: string };
     }
-    case 'SET_USER_MATCHES': {
-      const { array } = action;
-      return { ...state, isUserMatches: array };
+    case 'SET_PREV_PUSH': {
+      const { string } = action;
+      return { ...state, isPreviousPush: string };
+    }
+    case 'SET_RECENT_SEARCHES': {
+      const { obj } = action;
+      return { ...state, isRecentSearches: obj };
     }
     case 'SET_HARD_RESET' : {
       return { state : {} }

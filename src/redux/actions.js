@@ -27,5 +27,6 @@ export const setPlayerTwoParams = string => ({type: 'SET_PLAYER_TWO_PARAMS', str
 export const setPlayerOneCountry = string => ({type: 'SET_PLAYER_ONE_COUNTRY', string})
 export const setPlayerTwoCountry = string => ({type: 'SET_PLAYER_TWO_COUNTRY', string})
 export const setUserSessionID = string => ({type : 'SET_USER_SESSION', string})
-export const setUserMatches = array => ({type: 'SET_USER_MATCHES', array})
 export const setHardReset = obj => ({type: 'SET_HARD_RESET', obj})
+export const setPreviousPush = string => ({type: 'SET_PREV_PUSH', string})
+export const setRecentSearches = obj => ({type: 'SET_RECENT_SEARCHES', obj})

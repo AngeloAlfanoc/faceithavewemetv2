@@ -24,8 +24,6 @@ export const mapDecider = (string) => {
             return de_dust2
         case "de_overpass":
             return de_overpass
-        case "de_train":
-            return de_train
         case "de_cache":
             return de_cache
         case "de_inferno":

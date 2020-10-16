@@ -28,7 +28,7 @@ const Session = () => {
             .get()
             .then(function (querySnapshot) {
                 querySnapshot.forEach(function (doc) {
-                    console.log(doc.id, " => ", doc.data());
+                    // console.log(doc.id, " => ", doc.data());
                     setSession(doc.id)
                 });
             })

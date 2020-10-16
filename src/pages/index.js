@@ -14,9 +14,9 @@ const Index = () => {
     <>
     <Session/>
     <UrlState/>
-    <Banner/>
+    {/* <Banner/> */}
     <Header/>
-    <Activity/>
+    {/* <Activity/> */}
     
     <div className="container d-flex flex-column">
       <Search/>

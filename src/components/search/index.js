@@ -119,18 +119,13 @@ const Search = () => {
             setInputOne(playerOneParams)
             setInputTwo(playerTwoParams)
             handleSubmitParam();
-
     }
 
 
 
     useEffect(() => {
-
         runInit()
-
     },[playerOneParams,  playerTwoParams]);
-
-
 
     const handleReset = (e) => {
         e.preventDefault();
@@ -143,16 +138,13 @@ const Search = () => {
     return (
         <div>
             <form className="d-flex align-items-center flex-wrap search" >
-               
-                    <input type="text" value={inputOne} name='player' required={true} onKeyDown={e => onInput(e)} onChange={e => setInputOne(e.target.value)} onClick={e => { onInput(e) }} ref={playerOne} placeholder="player 1"></input>
-               
+                <input type="text" value={inputOne} name='player' required={true} onKeyDown={e => onInput(e)} onChange={e => setInputOne(e.target.value)} onClick={e => { onInput(e) }} ref={playerOne} placeholder="player 1"></input>
                 <input type="text" value={inputTwo} name='player' required={true} onKeyDown={e => onInput(e)} onChange={e => setInputTwo(e.target.value)} onClick={e => { onInput(e) }} ref={playerTwo} placeholder="player 2"></input>
                 <div className="button-set">
                 <button style={{ width: 45 }}><SearchIcon height={15} /></button>
                 <button onClick={e => handleReset(e)} className="mx-1 text-white" style={{ width: 60 }}><small>Reset</small></button>
                 </div>
             </form>
-
         </div>
     );
 }

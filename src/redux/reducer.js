@@ -122,6 +122,10 @@ const mainReducer = (state = loadState(), action) => {
     case 'SET_HARD_RESET' : {
       return { state : {} }
     }
+    case 'SET_LOAD_COMPARE' : {
+      const { bool } = action;
+      return { ...state, isLoading: bool };
+    }
     default:
       return { ...state };
   }

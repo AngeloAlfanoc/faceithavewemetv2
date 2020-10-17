@@ -35,5 +35,6 @@ export default {
     getMatchesById,
     getPlayerMatchHistory,
     getPlayerStats,
-    getPlayerMatchState
+    getPlayerMatchState,
+    getPlayersBySearch
 };

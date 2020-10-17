@@ -1,5 +1,5 @@
 import React, { useEffect, } from 'react'
-import { setPlayerOneParams, setPlayerTwoParams, setPreviousPush } from '../../redux/actions'
+import { setLoadCompare, setPlayerOneParams, setPlayerTwoParams, setPreviousPush } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 
 import firebase from 'firebase'
@@ -31,6 +31,7 @@ const UrlState = (props) => {
 
 
   useEffect(() => {
+   
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     for (let value of urlParams.values()) {
@@ -38,23 +39,23 @@ const UrlState = (props) => {
     }
     dispatch(setPlayerOneParams(cached[0]))
     dispatch(setPlayerTwoParams(cached[1]))
-    if (cached.length > 0) {
-      if (userSession) {
-        if(prevUserPush === undefined) {
-          dispatch(setPreviousPush({
-            user: userSession,
-            userOne: md5(uid()),
-            userTwo: md5(uid()),
-            timestamp:Math.floor(Date.now() / 1000)
-          }))
-        }
-        else if(cached[0] !== prevUserPush.userOne || cached[1] !== prevUserPush.userTwo) { 
-          writeRecentSearch(cached[0], cached[1], userSession)
-        }
-      }
-    }
+    // if (cached.length > 0) {
+    //   if (userSession) {
+    //     if(prevUserPush === undefined) {
+    //       dispatch(setPreviousPush({
+    //         user: userSession,
+    //         userOne: md5(uid()),
+    //         userTwo: md5(uid()),
+    //         timestamp:Math.floor(Date.now() / 1000)
+    //       }))
+    //     }
+    //     else if(cached[0] !== prevUserPush.userOne || cached[1] !== prevUserPush.userTwo) { 
+    //       writeRecentSearch(cached[0], cached[1], userSession)
+    //     }
+    //   }
+    // }
 
-  },  [cached]);
+  },  [cached, dispatch]);
 
 
 

@@ -1,5 +1,5 @@
 module.exports = {
-  isPlayerOneName: '-',
+  isPlayerOneName: 'Player One',
   isPlayerOneId: '',
   isPlayerOneElo:'-',
   isPlayerOneWinStreak:'-',
@@ -10,7 +10,7 @@ module.exports = {
   isPlayerOneWins:'-',
   isPlayerOneAvatar:'',
   isPlayerTwoWins:'-',
-  isPlayerTwoName: '-',
+  isPlayerTwoName: 'Player Two',
   isPlayerTwoId: '',
   isPlayerTwoElo:'-',
   isPlayerTwoWinStreak:'-',
@@ -27,5 +27,6 @@ module.exports = {
   isPlayerTwoCountry:'',
   isUserSession:'',
   isPreviousPush:'',
-  isRecentSearches:''
+  isRecentSearches:'',
+  isLoading:false,
 }

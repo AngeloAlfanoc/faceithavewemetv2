@@ -22,12 +22,6 @@ h4 {
       text-align: center;
     }
 }
-.container{
-  @media screen and (max-width: 452px) {
-  margin-left: 1rem;
-  width: 97vw;
-  }
-}
 span {
     font-size: .8rem;
 }
@@ -56,7 +50,7 @@ input {
   }
 
   input:hover {
-    border: 1px solid #181818;
+    border: 1px solid #195962;
   }
 
   input:focus {
@@ -71,7 +65,7 @@ input {
   
 
   ::-webkit-scrollbar-track {
-    background: #252932;; 
+    background: #3f4147;; 
   }
    
 
@@ -81,5 +75,16 @@ input {
   
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #191C21; 
+    background:#252932; 
+  }
+
+  .cookieConsent {
+   
+    div{
+       font-size: .8rem !important;
+    }
+    button{
+      width: 100px;
+      color:white !important;
+    }
   }

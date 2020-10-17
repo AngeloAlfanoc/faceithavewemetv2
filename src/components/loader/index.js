@@ -6,7 +6,9 @@ const Loader = () => {
 
 
   return (
-    <div className="d-flex justify-content-center loader"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
+    <div className="d-flex justify-content-center loader">
+      <div class="lds-facebook"><div></div><div></div><div></div></div>
+    </div>
   );
 }
 

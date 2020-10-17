@@ -34,10 +34,9 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import MainService from '../../services/MainService'
 import { ReactComponent as SearchIcon } from '../../assets/ui/magnifier.svg'
-import firebase from 'firebase'
+import Swal from 'sweetalert2'
 
 const Search = () => {
-    const db = firebase.firestore();
     const playerOne = useRef(null);
     const playerTwo = useRef(null);
     const dispatch = useDispatch()
@@ -104,8 +103,18 @@ const Search = () => {
         if (playerOneParams && playerTwoParams) {
             if (playerOneName !== '' && playerTwoName !== '') {
                 if (playerOneName !== playerOneParams || playerTwoName !== playerTwoParams) {
-                    fetchDataPlayerOne(playerOneParams)
-                    fetchDataPlayerTwo(playerTwoParams)
+                    if(playerOneParams === playerTwoParams)  {
+
+                        Swal.fire(
+                            'Please make sure',
+                            'You fill in 2 different players!',
+                          )
+                    }
+                    else{
+                      fetchDataPlayerOne(playerOneParams)
+                      fetchDataPlayerTwo(playerTwoParams)  
+                    }
+                    
                 }
             }
 
@@ -116,16 +125,18 @@ const Search = () => {
     const runInit = async () => {
             await playerOneParams
             await playerTwoParams
-            setInputOne(playerOneParams)
-            setInputTwo(playerTwoParams)
-            handleSubmitParam();
+
+                setInputOne(playerOneParams)
+                setInputTwo(playerTwoParams)
+                handleSubmitParam(); 
+            
     }
 
 
 
     useEffect(() => {
         runInit()
-    },[playerOneParams,  playerTwoParams]);
+    },[playerOneParams,  playerTwoParams, runInit]);
 
     const handleReset = (e) => {
         e.preventDefault();
@@ -137,7 +148,9 @@ const Search = () => {
 
     return (
         <div>
+            
             <form className="d-flex align-items-center flex-wrap search" >
+                
                 <input type="text" value={inputOne} name='player' required={true} onKeyDown={e => onInput(e)} onChange={e => setInputOne(e.target.value)} onClick={e => { onInput(e) }} ref={playerOne} placeholder="player 1"></input>
                 <input type="text" value={inputTwo} name='player' required={true} onKeyDown={e => onInput(e)} onChange={e => setInputTwo(e.target.value)} onClick={e => { onInput(e) }} ref={playerTwo} placeholder="player 2"></input>
                 <div className="button-set">
